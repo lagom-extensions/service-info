@@ -1,9 +1,11 @@
-#### Lagom Version Info
+#### Lagom Service Info
+Project is quite similar with spring actuator, but for Lagom based scala projects
 
 ##### Library dependencies used
 - sbt build info
 - sbt sbt-git
-
+- spring actuator (jdbc for database checks)
+- set of provided libraries required for specific health indicators
 
 #### Development integration notes
 ##### 1. include dependency on service info plugin
