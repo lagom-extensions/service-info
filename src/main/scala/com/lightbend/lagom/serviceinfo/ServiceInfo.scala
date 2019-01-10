@@ -25,6 +25,7 @@ case class HealthInfo(statusCode: String, details: JsValue = JsNull)
 @silent
 object HealthInfo {
   val applicationName = "app"
+  val simpleParam = "simple"
   private[this] val log = LoggerFactory.getLogger(getClass)
 
   implicit val format: Format[HealthInfo] = Json.format

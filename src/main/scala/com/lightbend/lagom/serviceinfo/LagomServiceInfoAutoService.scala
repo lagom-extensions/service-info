@@ -20,8 +20,10 @@ trait LagomServiceInfoAutoService { this: LagomServiceInfoService =>
     import scala.concurrent.ExecutionContext.Implicits.global
     Future(buildInfo)
   }
-  override def healthInfo: ServiceCall[NotUsed, HealthInfo] = ServiceCall { _ =>
-    aggregateHealthInfo(aggregator, healthIndicators)(scala.concurrent.ExecutionContext.global)
+  override def healthInfo(simple: Boolean): ServiceCall[NotUsed, HealthInfo] = ServiceCall { _ =>
+    implicit val ex: ExecutionContext = scala.concurrent.ExecutionContext.global
+    if (simple) aggregateHealthInfo(aggregator, ListMap.empty)
+    else aggregateHealthInfo(aggregator, healthIndicators)
   }
 }
 
